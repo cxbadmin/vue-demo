@@ -3,6 +3,7 @@ import Vue from 'vue'
 import Cookies from 'js-cookie'
 
 import Element from 'element-ui'
+import * as echarts from 'echarts';
 import './assets/styles/element-variables.scss'
 
 import '@/assets/styles/index.scss' // global css
@@ -19,6 +20,7 @@ import './permission' // permission control
 import { getDicts } from "@/api/system/dict/data";
 import { getConfigKey } from "@/api/system/config";
 import { parseTime, resetForm, addDateRange, selectDictLabel, selectDictLabels, handleTree } from "@/utils/ruoyi";
+import { resize, removeResizeCharts } from '@/utils/resize'
 // 分页组件
 import Pagination from "@/components/Pagination";
 // 自定义表格工具组件
@@ -48,6 +50,9 @@ Vue.prototype.selectDictLabel = selectDictLabel
 Vue.prototype.selectDictLabels = selectDictLabels
 Vue.prototype.download = download
 Vue.prototype.handleTree = handleTree
+Vue.prototype.$echarts = echarts //挂载到Vue实例上面
+Vue.prototype.resizeCharts = resize
+Vue.prototype.removeResizeCharts = removeResizeCharts
 
 // 全局组件挂载
 Vue.component('DictTag', DictTag)

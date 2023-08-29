@@ -13,10 +13,17 @@ const whiteList = ['/login', '/register']
 router.beforeEach((to, from, next) => {
   NProgress.start()
   if (getToken()) {
-    to.meta.title && store.dispatch('settings/setTitle', to.meta.title)
+    console.log(to)
+    next();
+    // to.meta.title && store.dispatch('settings/setTitle', to.meta.title)
+    // store.dispatch('GenerateRoutes').then(accessRoutes => {
+    //   // 根据roles权限生成可访问的路由表
+    //   router.addRoutes(accessRoutes) // 动态添加可访问路由表
+    //   next({ ...to, replace: true }) // hack方法 确保addRoutes已完成
+    // })
     /* has token*/
     if (to.path === '/login') {
-      next({ path: '/' })
+      next(`/login?redirect=${to.fullPath}`)
       NProgress.done()
     } else {
       if (store.getters.roles.length === 0) {

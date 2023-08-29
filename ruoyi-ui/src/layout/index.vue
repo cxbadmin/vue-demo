@@ -5,7 +5,7 @@
     <div :class="{hasTagsView:needTagsView,sidebarHide:sidebar.hide}" class="main-container">
       <div :class="{'fixed-header':fixedHeader}">
         <navbar/>
-        <tags-view v-if="needTagsView"/>
+        <!-- <tags-view v-if="needTagsView"/> --> <!-- 内容上方的路由tag -->
       </div>
       <app-main/>
       <right-panel>
@@ -19,7 +19,7 @@
 import RightPanel from '@/components/RightPanel'
 import { AppMain, Navbar, Settings, Sidebar, TagsView } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
-import { mapState } from 'vuex'
+import { mapState } from 'vuex';
 import variables from '@/assets/styles/variables.scss'
 
 export default {

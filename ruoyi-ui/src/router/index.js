@@ -5,6 +5,7 @@ Vue.use(Router)
 
 /* Layout */
 import Layout from '@/layout'
+// import Layout from '@/layout/layout'
 
 /**
  * Note: 路由配置项
@@ -64,14 +65,49 @@ export const constantRoutes = [
   {
     path: '',
     component: Layout,
-    redirect: 'index',
+    redirect: '/home',
     children: [
       {
-        path: 'index',
-        component: () => import('@/views/index'),
-        name: 'Index',
+        path: '/home',
+        component: () => import('@/views/home/index'),
+        name: '首页',
         meta: { title: '首页', icon: 'dashboard', affix: true }
-      }
+      },
+      
+    ]
+  },
+  {
+    path: "/system",
+    component: Layout,
+    redirect: "noRedirect",
+    alwaysShow: true,
+    meta: { title: '系统管理', icon: 'edit', affix: true },
+    children: [
+      {
+        path: '/system/user',
+        component: () => import('@/views/userconfig/index'),
+        name: '用户管理',
+        meta: { title: '用户管理', icon: 'table', affix: true }
+      },
+      {
+        path: '/system/servicemonitoring',
+        component: () => import('@/views/service/index'),
+        name: '服务监控',
+        meta: { title: '服务监控', icon: 'nested', affix: true }
+      },
+    ]
+  },
+  {
+    path: "/charts",
+    component: Layout,
+    redirect: "noRedirect",
+    children: [
+      {
+        path: '/charts',
+        component: () => import('@/views/charts/index'),
+        name: '图谱展示',
+        meta: { title: '图谱展示', icon: 'table', affix: true }
+      },
     ]
   },
   {

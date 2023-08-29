@@ -20,6 +20,7 @@ export default {
       return this.$store.state.tagsView.cachedViews
     },
     key() {
+      console.log(this.$route.meta.link)
       return this.$route.path
     }
   }
@@ -29,10 +30,13 @@ export default {
 <style lang="scss" scoped>
 .app-main {
   /* 50= navbar  50  */
-  min-height: calc(100vh - 50px);
+  // min-height: calc(100vh - 50px);
+  height: calc(100vh - 50px);
+  overflow-y: scroll !important;
   width: 100%;
   position: relative;
   overflow: hidden;
+  font-size: 14px;
 }
 
 .fixed-header + .app-main {

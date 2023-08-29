@@ -8,27 +8,27 @@
     <div class="right-menu">
       <template v-if="device!=='mobile'">
         <search id="header-search" class="right-menu-item" />
-        
+<!--         
         <el-tooltip content="源码地址" effect="dark" placement="bottom">
           <ruo-yi-git id="ruoyi-git" class="right-menu-item hover-effect" />
-        </el-tooltip>
+        </el-tooltip> -->
 
-        <el-tooltip content="文档地址" effect="dark" placement="bottom">
+        <!-- <el-tooltip content="文档地址" effect="dark" placement="bottom">
           <ruo-yi-doc id="ruoyi-doc" class="right-menu-item hover-effect" />
-        </el-tooltip>
+        </el-tooltip> -->
 
         <screenfull id="screenfull" class="right-menu-item hover-effect" />
 
-        <el-tooltip content="布局大小" effect="dark" placement="bottom">
+        <!-- <el-tooltip content="布局大小" effect="dark" placement="bottom">
           <size-select id="size-select" class="right-menu-item hover-effect" />
-        </el-tooltip>
+        </el-tooltip> -->
 
       </template>
-
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
         <div class="avatar-wrapper">
-          <img :src="avatar" class="user-avatar">
-          <i class="el-icon-caret-bottom" />
+          <!-- <img :src="avatar" class="user-avatar">
+          <i class="el-icon-caret-bottom" /> -->
+          {{ userName }}
         </div>
         <el-dropdown-menu slot="dropdown">
           <router-link to="/user/profile">
@@ -68,6 +68,12 @@ export default {
     RuoYiGit,
     RuoYiDoc
   },
+  data: function() {
+    console.log(this.$store.state.user)
+    return {
+      userName: this.$store.state.user.name || 'admin'
+    };
+  },
   computed: {
     ...mapGetters([
       'sidebar',
@@ -102,7 +108,7 @@ export default {
         type: 'warning'
       }).then(() => {
         this.$store.dispatch('LogOut').then(() => {
-          location.href = '/index';
+          location.href = '/login';
         })
       }).catch(() => {});
     }
@@ -173,10 +179,10 @@ export default {
     }
 
     .avatar-container {
-      margin-right: 30px;
+      margin-right: 10px;
 
       .avatar-wrapper {
-        margin-top: 5px;
+        // margin-top: 5px;
         position: relative;
 
         .user-avatar {

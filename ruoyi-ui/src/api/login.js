@@ -1,21 +1,25 @@
 import request from '@/utils/request'
 
 // 登录方法
-export function login(username, password, code, uuid) {
+export function login(username, password) {
   const data = {
     username,
     password,
-    code,
-    uuid
   }
-  return request({
-    url: '/login',
-    headers: {
-      isToken: false
-    },
-    method: 'post',
-    data: data
-  })
+  if (username === 'cxb') {
+    return Promise.resolve({ data: 'success' });
+  } else {
+    return Promise.resolve({ data: '账号密码错误' });
+  }
+  // return request({
+  //   url: '/login',
+  //   headers: {
+  //     isToken: false
+  //   },
+  //   method: 'post',
+  //   data: data
+  // })
+   
 }
 
 // 注册方法
@@ -32,18 +36,20 @@ export function register(data) {
 
 // 获取用户详细信息
 export function getInfo() {
-  return request({
-    url: '/getInfo',
-    method: 'get'
-  })
+  // return request({
+  //   url: '/getInfo',
+  //   method: 'get'
+  // })
+  return Promise.resolve({ user: { userName: 'cxb', avatar: '' }})
 }
 
 // 退出方法
 export function logout() {
-  return request({
-    url: '/logout',
-    method: 'post'
-  })
+  // return request({
+  //   url: '/logout',
+  //   method: 'post'
+  // })
+  return Promise.resolve({ data: 'success' })
 }
 
 // 获取验证码
