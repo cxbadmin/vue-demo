@@ -6,8 +6,8 @@
 export default {
   mounted() {
     const myCharts = this.$echarts.init(document.getElementById('lineCharts'));
-    this.resizeCharts(myCharts);
-    this.initEcharts(myCharts);
+    this.resizeCharts(myCharts)
+    this.initEcharts(myCharts)
   },
   beforeDestroy() {
     const myCharts = this.$echarts.init(document.getElementById('barCharts'));
