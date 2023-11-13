@@ -4,6 +4,7 @@ import Cookies from 'js-cookie'
 
 import Element from 'element-ui'
 import * as echarts from 'echarts';
+import G6 from '@antv/g6';
 import './assets/styles/element-variables.scss'
 
 import '@/assets/styles/index.scss' // global css
@@ -53,6 +54,7 @@ Vue.prototype.handleTree = handleTree
 Vue.prototype.$echarts = echarts //挂载到Vue实例上面
 Vue.prototype.resizeCharts = resize
 Vue.prototype.removeResizeCharts = removeResizeCharts
+// Vue.prototype.$g6 = G6; // 挂在g6
 
 // 全局组件挂载
 Vue.component('DictTag', DictTag)

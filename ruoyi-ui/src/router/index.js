@@ -111,6 +111,19 @@ export const constantRoutes = [
     ]
   },
   {
+    path: "/g6",
+    component: Layout,
+    redirect: "noRedirect",
+    children: [
+      {
+        path: '/g6',
+        component: () => import('@/views/g6/index'),
+        name: 'G6图谱展示',
+        meta: { title: 'G6图谱DEMO', icon: 'table', affix: true }
+      },
+    ]
+  },
+  {
     path: '/user',
     component: Layout,
     hidden: true,

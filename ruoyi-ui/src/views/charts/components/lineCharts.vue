@@ -10,7 +10,7 @@ export default {
     this.initEcharts(myCharts)
   },
   beforeDestroy() {
-    const myCharts = this.$echarts.init(document.getElementById('barCharts'));
+    const myCharts = this.$echarts.init(document.getElementById('lineCharts'));
     removeResizeCharts(myCharts);
   },
   methods: {
